@@ -1,4 +1,4 @@
-package uab.cn.dynamicprogramming;
+package uab.cn.nearestneighbour;
 
 public class Main {
 
