@@ -19,6 +19,7 @@ public class NearestNeighbour {
         int element, dst = 0 ,i;
         double min = Double.MAX_VALUE;
         boolean minFlag = false;
+        int totalDst = 0;
         System.out.print(1 + "\t");
 
         while (!stack.isEmpty()) {
@@ -31,6 +32,7 @@ public class NearestNeighbour {
                             min = adjCitiesDistance[element][i];
                             dst = i;
                             minFlag = true;
+                            totalDst += min;
                     }
                 }
                 i++;
@@ -44,5 +46,6 @@ public class NearestNeighbour {
             }
             stack.pop();
         }
+        System.out.println("\nTotal percorrido: " + totalDst);
     }
 }
