@@ -27,7 +27,7 @@ public class Main {
                     executeGeneticAlgorithm(Utils.citiesPortugal, GENETIC_PORTUGAL_CITIES);
                     break;
                 case "2":
-                    executeGeneticAlgorithm(Utils.europeanCapitalsPortugal, GENETIC_EUROPEAN_CAPITALS);
+                    executeGeneticAlgorithm(Utils.europeanCapitals, GENETIC_EUROPEAN_CAPITALS);
                     break;
                 case "3":
                     System.exit(0);
