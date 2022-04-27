@@ -32,7 +32,6 @@ public class NearestNeighbour {
                             min = adjCitiesDistance[element][i];
                             dst = i;
                             minFlag = true;
-                            totalDst += min;
                     }
                 }
                 i++;
@@ -42,6 +41,7 @@ public class NearestNeighbour {
                 stack.push(dst);
                 System.out.print(dst + "\t");
                 minFlag = false;
+                totalDst += min;
                 continue;
             }
             stack.pop();
