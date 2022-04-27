@@ -4,23 +4,21 @@ import java.util.Stack;
 
 public class NearestNeighbour {
 
-    private int nNodes;
-    private Stack<Integer> stack;
+    private final Stack<Integer> stack;
 
     public NearestNeighbour() {
-        stack = new Stack<Integer>();
+        stack = new Stack<>();
     }
 
     public void tsp(double adjCitiesDistance[][]) {
-        nNodes = adjCitiesDistance[1].length - 1;
+        int nNodes = adjCitiesDistance[1].length - 1;
         int[] visited = new int[nNodes + 1];
-        visited[1] = 1;
-        stack.push(1);
-        int element, dst = 0 ,i;
+        visited[0] = 1;
+        stack.push(0);
+        int element, dst = 0, i, totalDst = 0;
         double min = Double.MAX_VALUE;
         boolean minFlag = false;
-        int totalDst = 0;
-        System.out.print(1 + "\t");
+        System.out.print(0 + "\t");
 
         while (!stack.isEmpty()) {
             element = stack.peek();
@@ -46,6 +44,7 @@ public class NearestNeighbour {
             }
             stack.pop();
         }
+        totalDst += adjCitiesDistance[dst][0];
         System.out.println("\nTotal percorrido: " + totalDst);
     }
 }

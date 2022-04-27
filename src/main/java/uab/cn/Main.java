@@ -67,7 +67,7 @@ public class Main {
         NearestNeighbour nearestNeighbour = new NearestNeighbour();
         nearestNeighbour.tsp(cities);
         long end2 = System.nanoTime();
-        System.out.printf("\nElapsed Time in milli seconds: %d\n",  end2-start2);
+        System.out.printf("\nElapsed Time in nano seconds: %d\n",  end2-start2);
         System.out.printf("*** Problem : %s - End ***\n", problemName);
         System.out.println("*****************************************************\n");
     }
