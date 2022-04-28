@@ -15,7 +15,7 @@ public class NearestNeighbour {
         int[] visited = new int[nNodes + 1];
         visited[0] = 1;
         stack.push(0);
-        int element, dst = 0, i, totalDst = 0;
+        int element, dst = 0, i, totalDst = 0, lastElement = 0;
         double min = Double.MAX_VALUE;
         boolean minFlag = false;
         System.out.print(0 + "\t");
@@ -40,11 +40,13 @@ public class NearestNeighbour {
                 System.out.print(dst + "\t");
                 minFlag = false;
                 totalDst += min;
+                lastElement = dst;
                 continue;
             }
             stack.pop();
         }
-        totalDst += adjCitiesDistance[dst][0];
-        System.out.println("\nTotal percorrido: " + totalDst);
+
+        totalDst += adjCitiesDistance[lastElement][0];
+        System.out.println("\nTotal travaled: " + totalDst);
     }
 }
