@@ -10,6 +10,7 @@ public class GeneticAlgorithm {
     // Attributes
     private final double[][] distances;
     private final int startingCity;
+    private Chromosome bestChromosome = null;
 
     public GeneticAlgorithm(double[][] distances, int startingCity) {
         this.distances = distances;
@@ -25,7 +26,7 @@ public class GeneticAlgorithm {
         double bestFitness = Double.MAX_VALUE;
         int iterationsWithoutImprovements = 0;
 
-        Chromosome bestChromosome = null;
+
         while((System.currentTimeMillis() - start) < TIME_LIMIT) {
             bestChromosome = population.getBestChromosome();
             double fitness = bestChromosome.getFitness();
@@ -48,12 +49,15 @@ public class GeneticAlgorithm {
         }
 
         System.out.printf("\nTotal of generations: %d\n", counter);
-        System.out.println("Best chromosome:\n" + bestChromosome);
         long end = System.currentTimeMillis();
         return (end - start);
     }
 
     private Population initializePopulation() {
         return Population.buildInitialPopulation(POPULATION_SIZE, distances.length, distances, startingCity);
+    }
+
+    public Chromosome getSolution() {
+        return this.bestChromosome;
     }
 }

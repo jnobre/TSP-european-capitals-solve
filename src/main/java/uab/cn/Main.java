@@ -31,16 +31,16 @@ public class Main {
             String option = selectOption();
             switch (option) {
                 case "1":
-                    executeGeneticAlgorithm(Utils.citiesPortugal, GENETIC_PORTUGAL_CITIES);
+                    executeGeneticAlgorithm(Utils.citiesPortugal, GENETIC_PORTUGAL_CITIES, Utils.portugueseCapitalsLabels);
                     break;
                 case "2":
-                    executeGeneticAlgorithm(Utils.europeanCapitals, GENETIC_EUROPEAN_CAPITALS);
+                    executeGeneticAlgorithm(Utils.europeanCapitals, GENETIC_EUROPEAN_CAPITALS, Utils.europeanCapitalsLabels);
                     break;
                 case "3":
-                    executeNonGeneticAlgorithm(Utils.citiesPortugal, NON_GENETIC_PORTUGAL_CITIES);
+                    executeNonGeneticAlgorithm(Utils.citiesPortugal, NON_GENETIC_PORTUGAL_CITIES, Utils.portugueseCapitalsLabels);
                     break;
                 case "4":
-                    executeNonGeneticAlgorithm(Utils.europeanCapitals, NON_GENETIC_EUROPEAN_CAPITALS);
+                    executeNonGeneticAlgorithm(Utils.europeanCapitals, NON_GENETIC_EUROPEAN_CAPITALS, Utils.europeanCapitalsLabels);
                     break;
                 case "5":
                     System.exit(0);
@@ -52,16 +52,17 @@ public class Main {
         }
     }
 
-    private static void executeGeneticAlgorithm(double[][] cities, String problemName) {
+    private static void executeGeneticAlgorithm(double[][] cities, String problemName, String[] labels) {
         System.out.printf("*** Problem : %s - Start ***\n", problemName);
         GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(cities, 0);
         long elapsedTime = geneticAlgorithm.optimize();
         System.out.printf("\nElapsed Time in milli seconds: %d\n",  elapsedTime);
         System.out.printf("*** Problem : %s - End ***\n", problemName);
+        System.out.println("Path: " + Utils.print(geneticAlgorithm.getSolution(), labels));
         System.out.println("*****************************************************\n");
     }
 
-    private static void executeNonGeneticAlgorithm(double[][] cities, String problemName) {
+    private static void executeNonGeneticAlgorithm(double[][] cities, String problemName, String[] labels) {
         System.out.printf("*** Problem : %s - Start ***\n", problemName);
         long start2 = System.nanoTime();
         NearestNeighbour nearestNeighbour = new NearestNeighbour();
@@ -69,6 +70,7 @@ public class Main {
         long end2 = System.nanoTime();
         System.out.printf("\nElapsed Time in nano seconds: %d\n",  end2-start2);
         System.out.printf("*** Problem : %s - End ***\n", problemName);
+        System.out.println("Path: " + Utils.print(nearestNeighbour.getSolution(), labels));
         System.out.println("*****************************************************\n");
     }
 }

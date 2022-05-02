@@ -1,16 +1,19 @@
 package uab.cn.nearestneighbour;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class NearestNeighbour {
 
     private final Stack<Integer> stack;
+    private List<Integer> solution = new ArrayList<>();
 
     public NearestNeighbour() {
         stack = new Stack<>();
     }
 
-    public void tsp(double adjCitiesDistance[][]) {
+    public List<Integer> tsp(double adjCitiesDistance[][]) {
         int nNodes = adjCitiesDistance[1].length - 1;
         int[] visited = new int[nNodes + 1];
         visited[0] = 1;
@@ -19,6 +22,7 @@ public class NearestNeighbour {
         double min = Double.MAX_VALUE;
         boolean minFlag = false;
         System.out.print(0 + "\t");
+
 
         while (!stack.isEmpty()) {
             element = stack.peek();
@@ -37,6 +41,7 @@ public class NearestNeighbour {
             if (minFlag) {
                 visited[dst] = 1;
                 stack.push(dst);
+                solution.add(dst);
                 System.out.print(dst + "\t");
                 minFlag = false;
                 totalDst += min;
@@ -48,5 +53,11 @@ public class NearestNeighbour {
 
         totalDst += adjCitiesDistance[lastElement][0];
         System.out.println("\nTotal travaled: " + totalDst);
+
+        return solution;
+    }
+
+    public List<Integer> getSolution() {
+        return solution;
     }
 }

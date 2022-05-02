@@ -1,8 +1,65 @@
 package uab.cn.utils;
 
+import uab.cn.genetic.Chromosome;
+
+import java.util.List;
 import java.util.Random;
 
 public class Utils {
+    public static final String[] portugueseCapitalsLabels = {
+            "Lisboa",
+            "Porto",
+            "Braga",
+            "Setúbal",
+            "Coimbra",
+            "Funchal",
+            "Évora",
+            "Aveiro",
+            "Leiria",
+            "Faro",
+            "Viana do Castelo",
+            "Beja",
+            "Bragança",
+            "Castelo Branco",
+            "Guarda",
+            "Ponta Delgada",
+            "Santarém",
+            "Viseu",
+            "Vila Real",
+            "Portalegre"
+    };
+
+    public static final String[] europeanCapitalsLabels = {
+        "Lisboa",
+        "Viena",
+        "Bruxelas",
+        "Sofia",
+        "Nicosia",
+        "Zagreb",
+        "Copenhagem",
+        "Bratislava",
+        "Liubliana",
+        "Madrid",
+        "Tallinn",
+        "Helsinque",
+        "Paris",
+        "Atenas",
+        "Budapeste",
+        "Dublin",
+        "Roma",
+        "Riga",
+        "Vilnus",
+        "Luxemburgo",
+        "Valetta",
+        "Amsterdã",
+        "Varsóvia",
+        "Berlim",
+        "Praga",
+        "Bucareste",
+        "Estocolmo"
+    };
+
+
     public static double[][] citiesPortugal = new double[][] {
         {0, 275, 322, 29, 178, 972, 108, 219, 119, 216, 333, 135, 399, 188, 259, 1447, 80, 239, 310, 161}, // Lisboa 0
         {275, 0, 47, 293, 106, 1198, 293, 57, 157, 463, 63, 354, 171, 175, 132, 1510, 214, 82, 75, 231}, // Porto 1
@@ -87,5 +144,28 @@ public class Utils {
             System.out.print("\n");
         }
     }
+
+    public static String print(Chromosome chromosome, String[] labels) {
+        return print(chromosome.getGens(), labels);
+    }
+
+    public static String print(List<Integer> list, String[] labels) {
+        if(null == labels)
+            return "";
+
+        StringBuilder sb = new StringBuilder();
+        sb.append(labels[0] + " -> ");
+
+        list.forEach( pos -> {
+            sb.append(labels[pos] + " -> ");
+
+        });
+        sb.append(labels[0]);
+        sb.append("\n");
+
+        return sb.toString();
+    }
+
+
 
 }
